@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> JS Key Events </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+<div class="container">
+<h4 style="text-align:center;">JavaScript Key Events Library</h4>
+
+<input type="text" id="keys" placeholder="Type Something">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <a id="btn1" class="waves-effect waves-light btn-large red lighten-4" style="width:100%;">Click Here</a>
+        </div>
+        <div class="col s6">
+            <a id="date" class="waves-effect waves-light btn-large red lighten-4" style="width:100%;">Show Date</a>
+        </div>        
+        <div class="col s6" >
+            <a id="helloClick" class="waves-effect waves-light btn-large red lighten-3" onmouseover="mOver(this)" onmouseout="mOut(this)" style="width:100%;" >Mouse Over</a>
+        </div>        
+        <div class="col s6">
+            <a class="waves-effect waves-light btn-large red lighten-2" onmousedown="mDown(this)" onmouseup="mUp(this)" style="width:100%;">Hold</a>
+        </div>              
+        <div class="col s6">
+            <a id="hideMe" class="waves-effect waves-light btn-large red lighten-1" style="width:100%;">Random Number</a>
+        </div>       
+        <div class="col s6">
+            <a id="hidden" class="waves-effect waves-light btn-large red" style="width:100%;">Hide me</a>
+            </div>        
+        </div>
+    </div>
+    
+    <p id="random"></p>
+</div>
+
+
+<script>
+//display date click
+document.getElementById("btn1").addEventListener("click", displayDate);
+
+function displayDate() {
+    document.getElementById("date").innerHTML = Date();
+}
+
+//mouse over
+function mOver(obj) {
+    obj.innerHTML = "You got it!";
+}
+
+function mOut(obj) {
+    obj.innerHTML = "Mouse Over Me";
+}
+
+//change color click 
+function mDown(obj) {
+    obj.style.color = "#1e88e5";
+    obj.innerHTML = "Release Me";
+}
+
+function mUp(obj) {
+    obj.style.color="green";
+    obj.innerHTML="Thank You";
+}
+
+//random numbers on mouseover
+document.getElementById("hideMe").addEventListener("mousemove", myFunction);
+
+function myFunction() {
+    document.getElementById("random").textContent = Math.random();
+}
+
+//key press 
+document.getElementById("keys").addEventListener("keypress", setColor);
+
+function setColor() {
+    document.getElementById("keys").style.backgroundColor = "grey";
+}
+
+//hide button 
+document.getElementById("hidden").addEventListener("click", hideButton);
+
+function hideButton() {
+    document.getElementById("hidden").style.visibility="hidden";
+}
+
+</script>
+
+</body>
+</html> 
+
