@@ -1,96 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title> JS Key Events </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <html>
+        <head>
+            <title>Draw me a picture.</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script> 
+            
+            //Currently, when a user types a letter, the background is automatically green
+            //Try to see if there is a linking issue with the code below. It might be that "input" is in the jquery field before "keydown"
+            //The user has to refresh the page every time in order for the page to reset to white 
+            $(document).ready(function(){
+                    $("input").keydown(function(e){ 
+                    $("div").html("Thank you for typing the letter " + String.fromCharCode(e.which) + "! Have a great rest of your day.");
+                });
+            });
+                   $(document).ready(function(){
+                        $("input").keydown(function(e){
+                            $("body").css("background-color", "chartreuse");
+                        });
+                    });
+                    $(document).ready(function(){
+                        $("input").keyup(function(e){
+                            $("h1").css("background-color", "white");
+                        });
+                    });
+                    $(document).ready(function(){
+                        $("input").keypress(function(e){
+                            $("p").html("background-color", "yellow");
+                        });
+                    });
+                    $(document).ready(function(){
+                        $("input").keydown(function(e){
+                            $("p").html("Please stop typing.");
+                        });
+                    });
+                    // The code below might help
+                    //Create an event which, that determines the key that was pressed and combine all of the code using else if 
 
-</head>
-<body>
+            //                     $(document).ready(function() {
+            //   $(document).keypress(function(event) {
+            //     if (event.which === 99) {
+            //       $(".light").css('background-color', "#00ffff");
+            //     } else if (event.which === 121) {
+            //       $(".light").css('background-color', "#00ffff");
+            //     } else if (event.which === 109) {
+            //       $(".light").css('background-color', "#00ffff");
+            //     }
+            //   });
+            // });
 
-<div class="container">
-<h4 style="text-align:center;">JavaScript Key Events Library</h4>
-
-<input type="text" id="keys" placeholder="Type Something">
-
-
-<div class="container">
-    <div class="row">
-        <div class="col s6">
-            <a id="btn1" class="waves-effect waves-light btn-large red lighten-4" style="width:100%;">Click Here</a>
-        </div>
-        <div class="col s6">
-            <a id="date" class="waves-effect waves-light btn-large red lighten-4" style="width:100%;">Show Date</a>
-        </div>        
-        <div class="col s6" >
-            <a id="helloClick" class="waves-effect waves-light btn-large red lighten-3" onmouseover="mOver(this)" onmouseout="mOut(this)" style="width:100%;" >Mouse Over</a>
-        </div>        
-        <div class="col s6">
-            <a class="waves-effect waves-light btn-large red lighten-2" onmousedown="mDown(this)" onmouseup="mUp(this)" style="width:100%;">Hold</a>
-        </div>              
-        <div class="col s6">
-            <a id="hideMe" class="waves-effect waves-light btn-large red lighten-1" style="width:100%;">Random Number</a>
-        </div>       
-        <div class="col s6">
-            <a id="hidden" class="waves-effect waves-light btn-large red" style="width:100%;">Hide me</a>
-            </div>        
-        </div>
-    </div>
+            //
+                    
+          </script>
+        </head>
+        <body>
+            <h1>What letter did you just type?</h1>
+            <p>Please type a letter below.</p>
+            <input type="text">
+            <div />
+            <span id="message" />
+        </body>
+</html>
     
-    <p id="random"></p>
-</div>
-
-
-<script>
-//display date click
-document.getElementById("btn1").addEventListener("click", displayDate);
-
-function displayDate() {
-    document.getElementById("date").innerHTML = Date();
-}
-
-//mouse over
-function mOver(obj) {
-    obj.innerHTML = "You got it!";
-}
-
-function mOut(obj) {
-    obj.innerHTML = "Mouse Over Me";
-}
-
-//change color click 
-function mDown(obj) {
-    obj.style.color = "#1e88e5";
-    obj.innerHTML = "Release Me";
-}
-
-function mUp(obj) {
-    obj.style.color="green";
-    obj.innerHTML="Thank You";
-}
-
-//random numbers on mouseover
-document.getElementById("hideMe").addEventListener("mousemove", myFunction);
-
-function myFunction() {
-    document.getElementById("random").textContent = Math.random();
-}
-
-//key press 
-document.getElementById("keys").addEventListener("keypress", setColor);
-
-function setColor() {
-    document.getElementById("keys").style.backgroundColor = "grey";
-}
-
-//hide button 
-document.getElementById("hidden").addEventListener("click", hideButton);
-
-function hideButton() {
-    document.getElementById("hidden").style.visibility="hidden";
-}
-
-</script>
-
-</body>
-</html> 
-
